@@ -115,13 +115,7 @@
 		<form action="admin" class="form-horizontal" method="post"
 			enctype="multipart/form-data">
 
-			<div class="form-group">
-				<label for="touxiang" class="col-sm-4 control-label">头像</label>
-				<div class="col-sm-4">
-					<input type="file" class="form-control" id="touxiang"
-						name="touxiang">
-				</div>
-			</div>
+		
 
 			<div class="form-group">
 				<label for="name" class="col-sm-4 control-label">姓名</label>
@@ -160,6 +154,13 @@
 				</div>
 			</div>
 
+           	<div class="form-group">
+				<label for="touxiang" class="col-sm-4 control-label">头像</label>
+				<div class="col-sm-4">
+					<input type="file" class="form-control" id="touxiang"
+						name="touxiang">
+				</div>
+			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
 					<button type="submit" class="btn btn-success btn-block">注册</button>
