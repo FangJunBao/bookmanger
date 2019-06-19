@@ -4,20 +4,17 @@
 <!DOCTYPE html >
 <html>
 <head>
-<meta charset="UTF-8">
-
 <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-
-<link rel="stylesheet" href="tubiao/iconfont.css">
 
 <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 
 <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 
 <link type="text/css" rel="stylesheet" href="jquery-ui.css">
+
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+
 <script type="text/javascript" src="js/jquery-ui.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 
@@ -279,12 +276,12 @@ h1 {
 					 --%>
 
 				<td colspan="10" align="center">
-					<button id="deleteStudent" class="btn btn-danger btn-danger">删除</button>
-					<button id="selectAll" class="btn btn-success btn-danger">全选</button>
-					<button id="unselectAll" class="btn btn-warning  btn-danger">全不选</button>
-					<button id="fanxuan" class="btn btn-primary btn-danger">反选</button>
-					<button id="outputSelect" class="btn btn-success btn-danger">导出选择</button>
-					<button id="outputAll" class="btn btn-primary btn-danger">导出全部</button>
+					<button id="deleteStudent"> <span class="ui-icon ui-icon-trash ui-icon-sm"> </span>删除</button>
+					<button id="selectAll"><span class="ui-icon ui-icon-circle-check"> </span>全选</button>
+					<button id="unselectAll"><span class="ui-icon ui-icon-circle-close"></span>全不选</button>
+					<button id="fanxuan" ><span class="ui-icon ui-icon-circle-check"></span>反选</button>
+					<button id="outputSelect" ><span class="ui-icon ui-icon-circle-triangle-n"></span>导出选择</button>
+					<button id="outputAll" ><span class="ui-icon ui-icon-circle-arrow-n"></span>导出全部</button>
 				</td>
 
 			</table>
@@ -301,7 +298,7 @@ h1 {
 			<div>
 				<br>
 				<p align="center">
-					<a href="addUI" class="btn btn-primary btn-xs">添加图书</a>
+					<a href="addUI" class="btn btn-success btn-block">添加图书</a>
 				</p>
 
 

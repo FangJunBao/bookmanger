@@ -162,7 +162,7 @@
 
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-4">
-					<button type="submit" class="btn btn-primary">注册</button>
+					<button type="submit" class="btn btn-success btn-block">注册</button>
 				</div>
 			</div>
 		</form>
@@ -170,7 +170,7 @@
 
 	<br>
 	<p align="center">
-		<a href="login.jsp">登录页面</a>
+		<a href="login.jsp"  class="col-sm-offset-4 col-sm-4" class="btn btn-success btn-block">登录页面</a>
 	</p>
 </body>
 </html>
