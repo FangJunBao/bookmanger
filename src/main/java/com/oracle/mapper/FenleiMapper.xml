@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.mapper.FenleiMapper">
+  <resultMap id="BaseResultMap" type="com.oracle.web.bean.Fenlei">
+    
+    <id column="f_id" jdbcType="INTEGER" property="fId" />
+    <result column="fname" jdbcType="VARCHAR" property="fname" />
+  </resultMap>
+ <!-- 
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+   
+    delete from fenlei
+    where f_id = #{fId,jdbcType=INTEGER}
+    </delete>
+ -->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  	
+  	delete from fenlei
+  	where f_id in
+  	 <foreach item="arr" collection="array" index="no" open="(" separator="," close=")">
+    
+   #{arr}
+	
+  </foreach>
+  </delete>
+  
+  <insert id="insert" parameterType="com.oracle.web.bean.Fenlei">
+   
+    insert into fenlei (f_id, fname)
+    values (#{fId,jdbcType=INTEGER}, #{fname,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.oracle.web.bean.Fenlei">
+   
+    update fenlei
+    set fname = #{fname,jdbcType=VARCHAR}
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    
+    select f_id, fname
+    from fenlei
+    where f_id = #{fId,jdbcType=INTEGER}
+    </select>
+	
+	
+	<select id="selectAll" resultMap="BaseResultMap">
+
+
+		select f_id, fname
+		from fenlei
+	</select>
+	
+	<select id="selectCount" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM fenlei
+  </select>
+  
+ 
+   <select id="selectBypage" parameterType="int"  resultMap="BaseResultMap">
+  	select * from fenlei  order by f_id desc limit #{index},5
+  	
+  </select>
+  
+  <select id="sesectAllBypage" parameterType="int"  resultMap="BaseResultMap">
+    select * from fenlei  order by f_id desc 
+  
+  
+  </select>
+  
+  <select id="showUserById" parameterType="java.lang.String" resultMap="BaseResultMap">
+  
+   select * from fenlei where f_id in
+   
+  <foreach item="arr" collection="array" index="no" open="(" separator="," close=")">
+    
+   #{arr}
+	
+  </foreach>
+  
+  </select>
+  
+  <select id="selectAll2" resultMap="BaseResultMap">
+  
+  select * from fenlei
+  
+  </select>
+</mapper>

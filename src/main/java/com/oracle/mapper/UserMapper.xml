@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oracle.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.oracle.web.bean.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="touxiang" jdbcType="VARCHAR" property="touxiang" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+   
+     where id in
+     
+     <foreach item="arr" collection="array" index="no" open="(" separator="," close=")">	
+    	#{arr}
+    </foreach>
+  
+  </delete>
+  <insert id="insert" parameterType="com.oracle.web.bean.User">
+    insert into user (id, name, touxiang, 
+      username, password, phone, 
+      date)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{touxiang,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{date,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oracle.web.bean.User">
+    update user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="touxiang != null">
+        touxiang = #{touxiang,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oracle.web.bean.User">
+    update user
+    set name = #{name,jdbcType=VARCHAR},
+      touxiang = #{touxiang,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, touxiang, username, password, phone, date
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, touxiang, username, password, phone, date
+    from user
+  </select>
+  
+  <select id="selectCount" resultType="java.lang.Integer">
+  	SELECT COUNT(*) FROM user
+  </select>
+  
+   <select id="selectBypage" parameterType="int"  resultMap="BaseResultMap">
+  	select * from user  order by id desc limit #{index},5
+  	
+  </select>
+  
+  <select id="selectAllBypage" parameterType="int"  resultMap="BaseResultMap">
+    select * from user  order by id desc 
+   
+  </select>
+  
+  <select id="showUserById" parameterType="java.lang.String" resultMap="BaseResultMap">
+  
+   select * from user where id in
+   
+  <foreach item="arr" collection="array" index="no" open="(" separator="," close=")">
+    
+   #{arr}
+	
+  </foreach>
+  
+  </select>
+  
+  <select id="selectAll2" resultMap="BaseResultMap">
+  
+  select * from user
+  
+  </select>
+  
+  <select id="selectValidate" parameterType="String" resultType="user">
+  	select * from user where username = #{username}
+  </select>
+  
+</mapper>
